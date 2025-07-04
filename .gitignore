@@ -58,4 +58,7 @@ logs/
 *.log
 
 # Demo specific
-src/assets/images/*.tmpclaude_desktop_config.json
+src/assets/images/*.tmp
+
+# Claude Desktop config (contains secrets)
+claude_desktop_config.json

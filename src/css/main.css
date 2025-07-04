@@ -94,6 +94,10 @@ nav .container {
   transition: all var(--transition-fast);
   border: none;
   font-size: var(--font-size-base);
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  text-decoration: none;
 }
 
 .primary-button, .cta-button {
@@ -119,6 +123,11 @@ nav .container {
 .button-small {
   padding: var(--spacing-xs) var(--spacing-sm);
   font-size: var(--font-size-sm);
+}
+
+.primary-button.large, .secondary-button.large, .cta-button.large {
+  padding: 14px 28px;
+  font-size: 17px;
 }
 
 /* Hero Section */

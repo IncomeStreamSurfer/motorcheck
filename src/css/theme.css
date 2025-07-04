@@ -6,6 +6,9 @@
 /* Import Manrope font - weights used in design: 500, 600 */
 @import url('https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&display=swap');
 
+/* Import Lexend for headings */
+@import url('https://fonts.googleapis.com/css2?family=Lexend:wght@400;500;600;700;800&display=swap');
+
 :root {
   /* Primary Colors - Exact from Figma */
   --color-primary: #44BF73;                    /* Green - rgb(0.2666, 0.7490, 0.4509) */
@@ -49,6 +52,7 @@
   
   /* Typography - Exact from Figma */
   --font-family-primary: 'Manrope', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-family-heading: 'Lexend', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   
   /* Font Sizes - Exact from design */
   --font-size-xs: 12px;                        /* Small text like "View All" */
@@ -152,4 +156,12 @@ body {
   margin: 0;
   padding: 0;
   overflow-x: hidden;
+}
+
+/* Headings use Lexend */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-family-heading);
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  font-style: normal;
 }

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Font Test - MotorCheck</title>
+    <link rel="stylesheet" href="https://use.typekit.net/tcb3anu.css">
+    <style>
+        body {
+            padding: 40px;
+            font-family: -apple-system, sans-serif;
+        }
+        
+        .font-test {
+            margin-bottom: 40px;
+        }
+        
+        .manrope {
+            font-family: 'Manrope', sans-serif;
+        }
+        
+        .neue-haas-display {
+            font-family: 'neue-haas-grotesk-display', sans-serif;
+            font-weight: 700;
+        }
+        
+        .neue-haas-text {
+            font-family: 'neue-haas-grotesk-text', sans-serif;
+            font-weight: 400;
+        }
+        
+        h1, h2 {
+            font-size: 48px;
+            margin: 20px 0;
+        }
+        
+        p {
+            font-size: 18px;
+            line-height: 1.6;
+        }
+    </style>
+</head>
+<body>
+    <div class="font-test">
+        <h1 style="font-family: 'neue-haas-grotesk-display', sans-serif; font-weight: 700;">Neue Haas Grotesk Display Bold</h1>
+        <h1 style="font-family: 'neue-haas-grotesk-display', sans-serif; font-weight: 400;">Neue Haas Grotesk Display Regular</h1>
+        <h1 style="font-family: 'neue-haas-grotesk-text', sans-serif; font-weight: 700;">Neue Haas Grotesk Text Bold</h1>
+        <h1 style="font-family: 'neue-haas-grotesk-text', sans-serif; font-weight: 400;">Neue Haas Grotesk Text Regular</h1>
+        <h1 style="font-family: 'Manrope', sans-serif; font-weight: 600;">Manrope Semibold</h1>
+    </div>
+    
+    <div class="font-test">
+        <h2>Testing Combined Styles:</h2>
+        <h1 class="neue-haas-display">The Stripe of Vehicle Data</h1>
+        <p class="manrope">This is body text in Manrope. Instant access to UK vehicle data APIs.</p>
+    </div>
+    
+    <div class="font-test">
+        <h2>Font Stack Test:</h2>
+        <p>Font CSS Variables:</p>
+        <pre>
+--font-family-heading: 'neue-haas-grotesk-display', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+--font-family-primary: 'Manrope', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        </pre>
+    </div>
+</body>
+</html>
