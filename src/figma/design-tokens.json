@@ -1,0 +1,29 @@
+{
+  "info": "This file will be populated by Figma MCP when designs are imported",
+  "status": "awaiting-figma-designs",
+  "colors": {
+    "primary": "#0066FF",
+    "secondary": "#00D4AA",
+    "text": {
+      "primary": "#1A1A1A",
+      "secondary": "#666666"
+    }
+  },
+  "typography": {
+    "fontFamily": {
+      "primary": "-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif",
+      "mono": "'Monaco', 'Consolas', 'Courier New', monospace"
+    },
+    "fontSize": {
+      "base": "1rem",
+      "lg": "1.125rem",
+      "xl": "1.25rem"
+    }
+  },
+  "spacing": {
+    "sm": "0.5rem",
+    "md": "1rem",
+    "lg": "1.5rem",
+    "xl": "2rem"
+  }
+}

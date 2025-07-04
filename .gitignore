@@ -1,5 +1,60 @@
-venv
-venv_linux
-__pycache__
-.ruff_cache
-.pytest_cache
+# Dependencies
+node_modules/
+venv/
+venv_linux/
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+.ruff_cache/
+.pytest_cache/
+
+# Environment variables
+.env
+.env.local
+.env.*.local
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Build outputs
+dist/
+build/
+*.log
+
+# Testing
+coverage/
+.coverage
+htmlcov/
+
+# Temporary files
+*.tmp
+*.bak
+.cache/
+
+# API keys and secrets
+*.key
+*.pem
+secrets/
+
+# Database
+*.db
+*.sqlite3
+
+# Logs
+logs/
+*.log
+
+# Demo specific
+src/assets/images/*.tmp
