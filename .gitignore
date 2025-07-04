@@ -47,6 +47,7 @@ htmlcov/
 *.key
 *.pem
 secrets/
+.mcp.json
 
 # Database
 *.db
@@ -57,4 +58,4 @@ logs/
 *.log
 
 # Demo specific
-src/assets/images/*.tmp
+src/assets/images/*.tmpclaude_desktop_config.json

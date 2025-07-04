@@ -3,129 +3,601 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="MotorCheck Dashboard - Manage your API keys, view usage statistics, and access documentation.">
-    <title>Dashboard - MotorCheck API</title>
-    
-    <!-- Styles -->
-    <link rel="stylesheet" href="../css/theme.css">
-    <link rel="stylesheet" href="../css/main.css">
+    <title>Dashboard - MotorCheck</title>
+    <link rel="stylesheet" href="../css/theme.css?v=1">
+    <link rel="stylesheet" href="../css/dashboard.css?v=1">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
 </head>
-<body class="dashboard-page">
-    <!-- Dashboard Demo Placeholder -->
-    <div class="demo-notice">
-        <p>⚠️ Demo Page - Awaiting Figma Designs via MCP</p>
-    </div>
-    
-    <div class="dashboard-layout">
-        <!-- Sidebar -->
-        <aside class="sidebar">
-            <div class="sidebar-header">
-                <div class="logo">MotorCheck</div>
-            </div>
-            <nav class="sidebar-nav">
-                <a href="#overview" class="nav-item active">Overview</a>
-                <a href="#api-keys" class="nav-item">API Keys</a>
-                <a href="#usage" class="nav-item">Usage</a>
-                <a href="#billing" class="nav-item">Billing</a>
-                <a href="#docs" class="nav-item">Documentation</a>
-                <a href="#settings" class="nav-item">Settings</a>
-            </nav>
-            <div class="sidebar-footer">
-                <a href="index.html" class="back-link">← Back to Homepage</a>
-            </div>
-        </aside>
-        
-        <!-- Main Content -->
-        <main class="dashboard-main">
-            <!-- Header -->
-            <header class="dashboard-header">
-                <h1>Dashboard</h1>
-                <div class="user-menu">
-                    <span>demo@motorcheck.com</span>
-                    <button class="logout-button">Logout</button>
+<body>
+    <!-- Main Application -->
+    <div class="app-container">
+            <!-- Sidebar -->
+            <aside class="sidebar" id="sidebar">
+                <div class="sidebar-header">
+                    <div class="logo">
+                        <img src="../assets/logo.png" alt="MotorCheck" class="logo-img">
+                    </div>
                 </div>
-            </header>
-            
-            <!-- Content -->
-            <div class="dashboard-content">
-                <!-- Quick Stats -->
-                <section class="stats-grid">
-                    <div class="stat-card">
-                        <h3>API Calls Today</h3>
-                        <p class="stat-value">1,234</p>
-                        <p class="stat-change">+12% from yesterday</p>
+
+                <nav class="sidebar-nav">
+                    <a href="#" class="nav-item active">
+                        <i data-lucide="layout-dashboard" class="nav-icon"></i>
+                        Dashboard
+                    </a>
+                    <a href="#" class="nav-item">
+                        <i data-lucide="bar-chart-3" class="nav-icon"></i>
+                        Usage
+                    </a>
+                    <a href="#" class="nav-item">
+                        <i data-lucide="book-open" class="nav-icon"></i>
+                        Documentation
+                    </a>
+                    <a href="#" class="nav-item">
+                        <i data-lucide="file-text" class="nav-icon"></i>
+                        Usage Logs
+                    </a>
+                    <a href="#" class="nav-item">
+                        <i data-lucide="credit-card" class="nav-icon"></i>
+                        Billing
+                    </a>
+                    <a href="#" class="nav-item">
+                        <i data-lucide="megaphone" class="nav-icon"></i>
+                        Release Notes
+                    </a>
+                </nav>
+
+                <div class="sidebar-footer">
+                    <div class="unlock-section">
+                        <div class="unlock-icon"><i data-lucide="crown"></i></div>
+                        <h5>Unlock more Endpoints</h5>
+                        <p>Contrary to popular belief, Lorem ipsum is not</p>
+                        <button class="unlock-btn">Unlock Now</button>
                     </div>
-                    <div class="stat-card">
-                        <h3>Current Month Usage</h3>
-                        <p class="stat-value">45,678</p>
-                        <p class="stat-change">£456.78 estimated</p>
+
+                    <div class="logout-section">
+                        <a href="#" class="nav-item">
+                            <i data-lucide="log-out" class="nav-icon"></i>
+                            Logout
+                        </a>
                     </div>
-                    <div class="stat-card">
-                        <h3>Active API Keys</h3>
-                        <p class="stat-value">3</p>
-                        <p class="stat-change">2 production, 1 test</p>
+                </div>
+            </aside>
+
+            <!-- Sidebar Overlay -->
+            <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+            <!-- Main Content -->
+            <main class="main-content">
+                <!-- Top Navigation -->
+                <header class="top-nav">
+                    <div class="nav-left">
+                        <button class="mobile-menu-toggle" id="mobileMenuToggle">
+                            <i data-lucide="menu"></i>
+                        </button>
+                        <h1>Dashboard</h1>
                     </div>
-                    <div class="stat-card">
-                        <h3>Response Time</h3>
-                        <p class="stat-value">145ms</p>
-                        <p class="stat-change">99.9% uptime</p>
+                    <div class="nav-center">
+                        <div class="search-bar">
+                            <i data-lucide="search" class="search-icon"></i>
+                            <input type="text" placeholder="Search for data, people, car...">
+                        </div>
                     </div>
-                </section>
-                
-                <!-- API Keys Section -->
-                <section class="api-keys-section">
-                    <h2>Your API Keys</h2>
-                    <div class="api-key-list">
-                        <div class="api-key-item">
-                            <div class="key-info">
-                                <span class="key-name">Production Key</span>
-                                <code class="key-value">mc_live_sk_test_4242...demo</code>
-                            </div>
-                            <div class="key-actions">
-                                <button class="button-small">Copy</button>
-                                <button class="button-small">Rotate</button>
+                    <div class="nav-right">
+                        <button class="top-up-btn hide-mobile">Top Up</button>
+                        <button class="notification-btn">
+                            <i data-lucide="bell"></i>
+                            <span class="notification-badge">2</span>
+                        </button>
+                        <div class="user-profile">
+                            <img src="../assets/shane-avatar.jpg" alt="Shane Teskey">
+                            <div class="user-info">
+                                <span class="user-name">Shane Teskey</span>
+                                <span class="user-date">16 May 2021</span>
                             </div>
                         </div>
-                        <div class="api-key-item">
-                            <div class="key-info">
-                                <span class="key-name">Test Key</span>
-                                <code class="key-value">mc_test_sk_test_9876...demo</code>
+                    </div>
+                </header>
+
+                <!-- Dashboard Content -->
+                <div class="dashboard-content">
+                    <!-- Welcome Section -->
+                    <section class="welcome-section">
+                        <div class="welcome-text">
+                            <h2>Welcome back, Shane</h2>
+                            <p><i data-lucide="sparkles" style="width: 16px; height: 16px; display: inline-block; vertical-align: text-bottom; margin-right: 4px; fill: currentColor;"></i>Shane, AI found <span class="highlight">2</span> ways to optimize your integration</p>
+                        </div>
+                        <div class="calendar-widget">
+                            <span class="calendar-day">Sunday</span>
+                            <span class="calendar-date">16 May 2021</span>
+                        </div>
+                    </section>
+
+                    <!-- Stats Cards -->
+                    <section class="stats-section">
+                        <div class="stat-card">
+                            <div class="stat-icon">
+                                <i data-lucide="users" style="color: #10B981"></i>
                             </div>
-                            <div class="key-actions">
-                                <button class="button-small">Copy</button>
-                                <button class="button-small">Rotate</button>
+                            <div class="stat-content">
+                                <span class="stat-label">Look-ups Remaining</span>
+                                <h3 class="stat-value">4,249</h3>
+                                <span class="stat-change positive">+3.1% <span>+12 this week</span></span>
                             </div>
                         </div>
-                    </div>
-                    <button class="primary-button">Create New Key</button>
-                </section>
-                
-                <!-- Quick Start Guide -->
-                <section class="quick-start">
-                    <h2>Quick Start</h2>
-                    <div class="code-example">
-                        <pre><code>// Install the MotorCheck SDK
-npm install motorcheck-api
 
-// Initialize with your API key
-const MotorCheck = require('motorcheck-api');
-const motorcheck = new MotorCheck('your_api_key_here');
+                        <div class="stat-card">
+                            <div class="stat-icon">
+                                <i data-lucide="clock" style="color: #3B82F6"></i>
+                            </div>
+                            <div class="stat-content">
+                                <span class="stat-label">Avg. Time Per Look-up</span>
+                                <h3 class="stat-value">0.1sec</h3>
+                                <span class="stat-change positive">-1.4% <span>-0.2sec this week</span></span>
+                            </div>
+                        </div>
 
-// Make your first API call
-const vehicle = await motorcheck.vehicles.check('TE57VRN');
-console.log(vehicle);</code></pre>
-                    </div>
-                    <a href="#" class="link">View full documentation →</a>
-                </section>
-                
-                <!-- Placeholder notice -->
-                <section class="placeholder">
-                    <p>Additional dashboard features will be implemented after Figma design import and client approval.</p>
-                </section>
-            </div>
-        </main>
+                        <div class="stat-card">
+                            <div class="stat-icon">
+                                <i data-lucide="activity" style="color: #8B5CF6"></i>
+                            </div>
+                            <div class="stat-content">
+                                <span class="stat-label">Response Rate</span>
+                                <h3 class="stat-value">97%</h3>
+                                <span class="stat-change positive">1.4% <span>+1.2% this week</span></span>
+                            </div>
+                        </div>
+
+                        <div class="stat-card">
+                            <div class="stat-icon">
+                                <i data-lucide="bar-chart-2" style="color: #000000"></i>
+                            </div>
+                            <div class="stat-content">
+                                <span class="stat-label">Status Code Response</span>
+                                <h3 class="stat-value">320</h3>
+                                <div style="display: flex; gap: 8px; margin-top: 12px;">
+                                    <div style="display: flex; flex-direction: column; align-items: center;">
+                                        <div style="height: 40px; width: 6px; background: #60A5FA; border-radius: 3px; margin-bottom: 4px;"></div>
+                                        <span style="font-size: 10px; color: #9CA3AF;">VIC</span>
+                                    </div>
+                                    <div style="display: flex; flex-direction: column; align-items: center;">
+                                        <div style="height: 32px; width: 6px; background: #F97316; border-radius: 3px; margin-bottom: 4px; margin-top: 8px;"></div>
+                                        <span style="font-size: 10px; color: #9CA3AF;">FC</span>
+                                    </div>
+                                    <div style="display: flex; flex-direction: column; align-items: center;">
+                                        <div style="height: 36px; width: 6px; background: #FCD34D; border-radius: 3px; margin-bottom: 4px; margin-top: 4px;"></div>
+                                        <span style="font-size: 10px; color: #9CA3AF;">POC</span>
+                                    </div>
+                                    <div style="display: flex; flex-direction: column; align-items: center;">
+                                        <div style="height: 24px; width: 6px; background: #EF4444; border-radius: 3px; margin-bottom: 4px; margin-top: 16px;"></div>
+                                        <span style="font-size: 10px; color: #9CA3AF;">DMC</span>
+                                    </div>
+                                    <div style="display: flex; flex-direction: column; align-items: center;">
+                                        <div style="height: 38px; width: 6px; background: #60A5FA; border-radius: 3px; margin-bottom: 4px; margin-top: 2px;"></div>
+                                        <span style="font-size: 10px; color: #9CA3AF;">SC</span>
+                                    </div>
+                                    <div style="display: flex; flex-direction: column; align-items: center;">
+                                        <div style="height: 28px; width: 6px; background: #E5E7EB; border-radius: 3px; margin-bottom: 4px; margin-top: 12px;"></div>
+                                        <span style="font-size: 10px; color: #9CA3AF;">CC</span>
+                                    </div>
+                                    <div style="display: flex; flex-direction: column; align-items: center;">
+                                        <div style="height: 42px; width: 6px; background: #A78BFA; border-radius: 3px; margin-bottom: 4px;"></div>
+                                        <span style="font-size: 10px; color: #9CA3AF;">RTM</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- Charts Section -->
+                    <section class="charts-section">
+                        <!-- Left Chart -->
+                        <div class="chart-card large">
+                            <div class="chart-header">
+                                <div>
+                                    <h3>Look-ups Over time</h3>
+                                    <p>Audience to which the users belonged while on the current date</p>
+                                </div>
+                                <button class="dropdown-btn small">
+                                    <span>View All</span>
+                                    <i data-lucide="chevron-down" class="dropdown-icon small"></i>
+                                </button>
+                            </div>
+                            <div class="chart-content">
+                                <canvas id="lookupChart"></canvas>
+                            </div>
+                            <div class="chart-legend">
+                                <div class="legend-item">
+                                    <span class="legend-dot" style="background: #44BF73"></span>
+                                    <span>Vehicle Identity Check</span>
+                                </div>
+                                <div class="legend-item">
+                                    <span class="legend-dot" style="background: #32A9FF"></span>
+                                    <span>Finance Checks</span>
+                                </div>
+                                <div class="legend-item">
+                                    <span class="legend-dot" style="background: #F4BE50"></span>
+                                    <span>Previous owner Checks</span>
+                                </div>
+                                <div class="legend-item">
+                                    <span class="legend-dot" style="background: #FC3400"></span>
+                                    <span>Detailed Mileage Checks</span>
+                                </div>
+                                <div class="legend-item">
+                                    <span class="legend-dot" style="background: #E4E4E4"></span>
+                                    <span>Stolen check</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Right Charts -->
+                        <div class="chart-column">
+                            <!-- Remaining Usage -->
+                            <div class="chart-card remaining-usage-card">
+                                <div class="chart-header">
+                                    <h3>Remaining Usage</h3>
+                                    <a href="#" class="view-all-link">View All</a>
+                                </div>
+                                <div class="usage-items">
+                                    <div class="usage-item">
+                                        <div class="usage-info">
+                                            <span class="usage-name">Vehicle Identity Check</span>
+                                            <span class="usage-count">56 / 92</span>
+                                        </div>
+                                        <div class="usage-bar">
+                                            <div class="usage-fill" style="width: 60.87%"></div>
+                                        </div>
+                                    </div>
+                                    <div class="usage-item">
+                                        <div class="usage-info">
+                                            <span class="usage-name">Finance Checks</span>
+                                            <span class="usage-count">42 / 92</span>
+                                        </div>
+                                        <div class="usage-bar">
+                                            <div class="usage-fill" style="width: 45.65%"></div>
+                                        </div>
+                                    </div>
+                                    <div class="usage-item">
+                                        <div class="usage-info">
+                                            <span class="usage-name">Previous owner Checks</span>
+                                            <span class="usage-count">38 / 92</span>
+                                        </div>
+                                        <div class="usage-bar">
+                                            <div class="usage-fill" style="width: 41.30%"></div>
+                                        </div>
+                                    </div>
+                                    <div class="usage-item">
+                                        <div class="usage-info">
+                                            <span class="usage-name">Detailed Mileage Checks</span>
+                                            <span class="usage-count">24 / 92</span>
+                                        </div>
+                                        <div class="usage-bar">
+                                            <div class="usage-fill" style="width: 26.09%"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="usage-cta">
+                                    <p>Running low on lookups?</p>
+                                    <button class="top-up-btn-secondary">Top Up Credits</button>
+                                </div>
+                            </div>
+
+                            <!-- Domain Usage - Hidden for now -->
+                            <!-- <div class="chart-card">
+                                <div class="chart-header">
+                                    <h3>Domain Usage</h3>
+                                </div>
+                                <div class="world-map">
+                                    <img src="../assets/world-map.svg" alt="World Map">
+                                    <div class="map-markers">
+                                        <div class="marker usa active" style="left: 25%; top: 40%"></div>
+                                        <div class="marker uk" style="left: 48%; top: 30%"></div>
+                                        <div class="marker germany" style="left: 52%; top: 32%"></div>
+                                    </div>
+                                </div>
+                                <div class="domain-info">
+                                    <h4>United States</h4>
+                                    <p>Audience to which the users belonged while on the current date</p>
+                                </div>
+                            </div> -->
+                        </div>
+                    </section>
+
+                    <!-- Additional Dashboard Sections -->
+                    <section class="additional-sections">
+                        <!-- Popular Endpoints -->
+                        <div class="chart-card">
+                            <div class="chart-header">
+                                <h3>Popular Endpoints</h3>
+                                <p>Most frequently called endpoints</p>
+                            </div>
+                            <div class="endpoints-list">
+                                <div class="endpoint-item">
+                                    <div class="endpoint-info">
+                                        <span class="endpoint-name">GET /api/v1/vehicle/{vrm}</span>
+                                        <span class="endpoint-calls">2,847 calls today</span>
+                                    </div>
+                                    <div class="endpoint-trend positive">+12%</div>
+                                </div>
+                                <div class="endpoint-item">
+                                    <div class="endpoint-info">
+                                        <span class="endpoint-name">GET /api/v1/mot/history/{vrm}</span>
+                                        <span class="endpoint-calls">1,923 calls today</span>
+                                    </div>
+                                    <div class="endpoint-trend positive">+8%</div>
+                                </div>
+                                <div class="endpoint-item">
+                                    <div class="endpoint-info">
+                                        <span class="endpoint-name">GET /api/v1/valuation/{vrm}</span>
+                                        <span class="endpoint-calls">1,456 calls today</span>
+                                    </div>
+                                    <div class="endpoint-trend negative">-3%</div>
+                                </div>
+                                <div class="endpoint-item">
+                                    <div class="endpoint-info">
+                                        <span class="endpoint-name">GET /api/v1/finance/check/{vrm}</span>
+                                        <span class="endpoint-calls">892 calls today</span>
+                                    </div>
+                                    <div class="endpoint-trend positive">+5%</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Credit Balance -->
+                        <div class="chart-card credit-balance-card">
+                            <div class="chart-header">
+                                <h3>Credit Balance</h3>
+                                <p>Prepaid credits remaining</p>
+                            </div>
+                            <div class="credit-info">
+                                <div class="credit-amount">
+                                    <span class="credit-value">£1,247.50</span>
+                                    <span class="credit-label">Available credits</span>
+                                </div>
+                                <div class="credit-details">
+                                    <div class="auto-topup">
+                                        <i data-lucide="refresh-cw" class="auto-icon"></i>
+                                        <div>
+                                            <span class="auto-label">Auto top-up</span>
+                                            <span class="auto-status active">Active · £500 at £100</span>
+                                        </div>
+                                    </div>
+                                    <button class="manage-credits-btn">Manage Credits</button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Vehicle Type Distribution -->
+                        <div class="chart-card">
+                            <div class="chart-header">
+                                <h3>Vehicle Type Distribution</h3>
+                                <p>Breakdown of queries by vehicle type</p>
+                            </div>
+                            <div class="vehicle-types">
+                                <div class="vehicle-type-item">
+                                    <div class="vehicle-icon car">
+                                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                            <path d="M5 11h14l-1.5-5H6.5L5 11z"/>
+                                            <rect x="3" y="11" width="18" height="7" rx="1"/>
+                                            <circle cx="7" cy="16" r="1"/>
+                                            <circle cx="17" cy="16" r="1"/>
+                                        </svg>
+                                    </div>
+                                    <span class="vehicle-label">Cars</span>
+                                    <span class="vehicle-percentage">68%</span>
+                                </div>
+                                <div class="vehicle-type-item">
+                                    <div class="vehicle-icon van">
+                                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                            <rect x="3" y="7" width="13" height="10" rx="1"/>
+                                            <rect x="16" y="10" width="5" height="7" rx="1"/>
+                                            <circle cx="7" cy="17" r="1"/>
+                                            <circle cx="17" cy="17" r="1"/>
+                                        </svg>
+                                    </div>
+                                    <span class="vehicle-label">Vans</span>
+                                    <span class="vehicle-percentage">18%</span>
+                                </div>
+                                <div class="vehicle-type-item">
+                                    <div class="vehicle-icon motorcycle">
+                                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                            <circle cx="7" cy="17" r="2"/>
+                                            <circle cx="17" cy="17" r="2"/>
+                                            <path d="M7 17h10m-5-8v8m0-8l3-3m-3 3L9 6"/>
+                                        </svg>
+                                    </div>
+                                    <span class="vehicle-label">Motorcycles</span>
+                                    <span class="vehicle-percentage">10%</span>
+                                </div>
+                                <div class="vehicle-type-item">
+                                    <div class="vehicle-icon truck">
+                                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                            <rect x="2" y="9" width="10" height="8" rx="1"/>
+                                            <rect x="12" y="5" width="10" height="12" rx="1"/>
+                                            <circle cx="6" cy="17" r="1"/>
+                                            <circle cx="18" cy="17" r="1"/>
+                                        </svg>
+                                    </div>
+                                    <span class="vehicle-label">Trucks</span>
+                                    <span class="vehicle-percentage">4%</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Code Snippet Generator -->
+                        <div class="chart-card">
+                            <div class="chart-header">
+                                <h3>Code Snippet Generator</h3>
+                                <p>Quick access to common implementations</p>
+                            </div>
+                            <div class="code-snippets">
+                                <div class="snippet-tabs">
+                                    <button class="snippet-tab active">JavaScript</button>
+                                    <button class="snippet-tab">Python</button>
+                                    <button class="snippet-tab">PHP</button>
+                                    <button class="snippet-tab">Ruby</button>
+                                </div>
+                                <div class="snippet-content">
+                                    <pre><code>// Vehicle check example
+const response = await fetch('https://api.motorcheck.co.uk/v1/vehicle/AB12CDE', {
+  headers: {
+    'Authorization': 'Bearer YOUR_API_KEY',
+    'Content-Type': 'application/json'
+  }
+});
+
+const vehicleData = await response.json();
+console.log(vehicleData);</code></pre>
+                                    <button class="copy-code-btn">
+                                        <i data-lucide="copy"></i>
+                                        Copy Code
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- AI Insights Section -->
+                        <div class="chart-card ai-insights-card">
+                            <div class="chart-header">
+                                <h3><i data-lucide="brain" style="width: 20px; height: 20px; display: inline-block; vertical-align: text-bottom; margin-right: 8px;"></i>AI Insights</h3>
+                                <p>Smart recommendations based on your usage</p>
+                            </div>
+                            <div class="ai-recommendations">
+                                <div class="ai-item">
+                                    <div class="ai-icon optimization">
+                                        <i data-lucide="trending-up"></i>
+                                    </div>
+                                    <div class="ai-content">
+                                        <h4>Optimization Opportunity</h4>
+                                        <p>Bundle MOT and finance checks to reduce API calls by 23%</p>
+                                        <button class="ai-action-btn">View Details</button>
+                                    </div>
+                                </div>
+                                <div class="ai-item">
+                                    <div class="ai-icon alert">
+                                        <i data-lucide="alert-circle"></i>
+                                    </div>
+                                    <div class="ai-content">
+                                        <h4>Usage Pattern Alert</h4>
+                                        <p>Unusual spike in failed lookups from IP 192.168.1.45</p>
+                                        <button class="ai-action-btn">Investigate</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Industry Insights -->
+                        <div class="chart-card">
+                            <div class="chart-header">
+                                <h3>Industry Insights</h3>
+                                <p>Aggregated anonymized data trends</p>
+                            </div>
+                            <div class="insights-grid">
+                                <div class="insight-item">
+                                    <span class="insight-value">+15%</span>
+                                    <span class="insight-label">EV queries this month</span>
+                                </div>
+                                <div class="insight-item">
+                                    <span class="insight-value">2.3M</span>
+                                    <span class="insight-label">Total UK lookups</span>
+                                </div>
+                                <div class="insight-item">
+                                    <span class="insight-value">43%</span>
+                                    <span class="insight-label">Finance checks positive</span>
+                                </div>
+                                <div class="insight-item">
+                                    <span class="insight-value">8.2yr</span>
+                                    <span class="insight-label">Avg vehicle age</span>
+                                </div>
+                            </div>
+                        </div>
+
+                    </section>
+
+                    <!-- Recent Lookups Table -->
+                    <section class="table-section">
+                        <div class="section-header">
+                            <h3>Recent Lookups</h3>
+                            <div class="section-actions">
+                                <button class="dropdown-btn small">
+                                    <span>Date</span>
+                                    <i data-lucide="chevron-down" class="dropdown-icon small"></i>
+                                </button>
+                                <button class="dropdown-btn small">
+                                    <span>Type</span>
+                                    <i data-lucide="chevron-down" class="dropdown-icon small"></i>
+                                </button>
+                                <button class="dropdown-btn small">
+                                    <span>More Filters</span>
+                                    <i data-lucide="chevron-down" class="dropdown-icon small"></i>
+                                </button>
+                                <button class="pagination-info">Page 1 of 5</button>
+                            </div>
+                        </div>
+                        <div class="table-wrapper">
+                            <table class="data-table">
+                                <thead>
+                                    <tr>
+                                        <th>NO</th>
+                                        <th>VIN</th>
+                                        <th>CAR TYPE</th>
+                                        <th>DATE</th>
+                                        <th>TYPE</th>
+                                        <th>REPORT</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>IN-2311</td>
+                                        <td>5YJ3E1EA1JF097616</td>
+                                        <td>Focus 1.6 TDCI Edge</td>
+                                        <td>Thu, 20 Feb 2022<br><small>at 2:32 PM</small></td>
+                                        <td><span class="badge green">Vehicle History</span></td>
+                                        <td><button class="view-report-btn">View Report</button></td>
+                                    </tr>
+                                    <tr>
+                                        <td>IN-2311</td>
+                                        <td>5YJ3E1EA1JF097616</td>
+                                        <td>Focus 1.6 TDCI Edge</td>
+                                        <td>Thu, 20 Feb 2022<br><small>at 2:32 PM</small></td>
+                                        <td><span class="badge green">Vehicle History</span></td>
+                                        <td><button class="view-report-btn">View Report</button></td>
+                                    </tr>
+                                    <tr>
+                                        <td>IN-2311</td>
+                                        <td>5YJ3E1EA1JF097616</td>
+                                        <td>Focus 1.6 TDCI Edge</td>
+                                        <td>Thu, 20 Feb 2022<br><small>at 2:32 PM</small></td>
+                                        <td><span class="badge green">Vehicle History</span></td>
+                                        <td><button class="view-report-btn">View Report</button></td>
+                                    </tr>
+                                    <tr>
+                                        <td>IN-2311</td>
+                                        <td>5YJ3E1EA1JF097616</td>
+                                        <td>Focus 1.6 TDCI Edge</td>
+                                        <td>Thu, 20 Feb 2022<br><small>at 2:32 PM</small></td>
+                                        <td><span class="badge green">Vehicle History</span></td>
+                                        <td><button class="view-report-btn">View Report</button></td>
+                                    </tr>
+                                    <tr>
+                                        <td>IN-2311</td>
+                                        <td>5YJ3E1EA1JF097616</td>
+                                        <td>Focus 1.6 TDCI Edge</td>
+                                        <td>Thu, 20 Feb 2022<br><small>at 2:32 PM</small></td>
+                                        <td><span class="badge green">Vehicle History</span></td>
+                                        <td><button class="view-report-btn">View Report</button></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <div class="table-footer">
+                                <a href="#" class="load-more">Load More ↓</a>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+            </main>
     </div>
-    
-    <script src="../js/app.js"></script>
+
+    <script src="../js/dashboard.js"></script>
 </body>
 </html>

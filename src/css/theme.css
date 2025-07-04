@@ -1,103 +1,155 @@
 /* MotorCheck Theme CSS
- * This file will be generated from Figma design tokens via MCP
- * Current values are placeholders for demo
+ * Pixel-perfect implementation from Figma design
+ * Dashboard Design System
  */
 
+/* Import Manrope font - weights used in design: 500, 600 */
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&display=swap');
+
 :root {
-  /* Colors - To be replaced with Figma tokens */
-  --color-primary: #0066FF;
-  --color-primary-dark: #0052CC;
-  --color-primary-light: #3385FF;
+  /* Primary Colors - Exact from Figma */
+  --color-primary: #44BF73;                    /* Green - rgb(0.2666, 0.7490, 0.4509) */
+  --color-background: #FAFAFA;                 /* Main bg - rgb(0.9800, 0.9799, 0.9799) */
+  --color-white: #FFFFFF;                      /* Pure white */
+  --color-text-dark: #020202;                  /* Dark text - rgb(0.0083, 0.0083, 0.0083) */
   
-  --color-secondary: #00D4AA;
-  --color-secondary-dark: #00A886;
-  --color-secondary-light: #33DDBB;
+  /* Border Colors - Exact from Figma */
+  --color-border: #E4E4E4;                     /* Main border - rgb(0.8941, 0.8941, 0.8941) */
+  --color-border-light: #F7F7F7;               /* Light border - rgb(0.9709, 0.9707, 0.9707) */
   
-  --color-success: #00C781;
-  --color-warning: #FFB800;
-  --color-error: #FF3B3B;
+  /* Alert/Status Colors */
+  --color-error: #FC3400;
+  --color-warning: #F4BE50;
+  --color-info: #32A9FF;
+  --color-success: #44BF73;
   
-  --color-text-primary: #1A1A1A;
-  --color-text-secondary: #666666;
-  --color-text-muted: #999999;
+  /* Surface Colors */
+  --color-surface: #FFFFFF;
+  --color-surface-light: #F7F7F9;
+  --color-surface-hover: #F5F5F5;
   
-  --color-background: #FFFFFF;
-  --color-surface: #F8F9FA;
-  --color-border: #E5E7EB;
+  /* Text Colors */
+  --color-text-primary: #020202;
+  --color-text-secondary: #84818A;
+  --color-text-muted: #B0B7C3;
+  --color-text-inverse: #FFFFFF;
   
-  /* Typography - To be replaced with Figma tokens */
-  --font-family-primary: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-  --font-family-mono: 'Monaco', 'Consolas', 'Courier New', monospace;
+  /* Icon Background Colors */
+  --color-icon-bg-blue: #E3F2FF;
+  --color-icon-bg-green: #E8F5E9;
+  --color-icon-bg-yellow: #FFF3E0;
+  --color-icon-bg-red: #FFEBEE;
   
-  --font-size-xs: 0.75rem;
-  --font-size-sm: 0.875rem;
-  --font-size-base: 1rem;
-  --font-size-lg: 1.125rem;
-  --font-size-xl: 1.25rem;
-  --font-size-2xl: 1.5rem;
-  --font-size-3xl: 2rem;
-  --font-size-4xl: 2.5rem;
-  --font-size-5xl: 3rem;
+  /* Shadows - Exact from Figma */
+  --shadow-card: 0 23px 44px rgba(176, 183, 195, 0.14);
+  --shadow-button: 0 2px 21px rgba(0, 0, 0, 0.08);
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.07);
+  --shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.1);
   
-  --font-weight-normal: 400;
-  --font-weight-medium: 500;
-  --font-weight-semibold: 600;
+  /* Typography - Exact from Figma */
+  --font-family-primary: 'Manrope', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  
+  /* Font Sizes - Exact from design */
+  --font-size-xs: 12px;                        /* Small text like "View All" */
+  --font-size-sm: 14px;                        /* Body small */
+  --font-size-base: 16px;                      /* Body regular */
+  --font-size-lg: 18px;                        /* Body large */
+  --font-size-xl: 20px;                        /* Heading small */
+  --font-size-2xl: 24px;                       /* Heading medium */
+  --font-size-3xl: 30px;                       /* Heading large */
+  --font-size-4xl: 36px;                       /* Headline - "Welcome back" */
+  
+  /* Font Weights - Used in design */
+  --font-weight-regular: 400;
+  --font-weight-medium: 500;                   /* "View All" links */
+  --font-weight-semibold: 600;                 /* Headlines */
   --font-weight-bold: 700;
   
-  --line-height-tight: 1.25;
-  --line-height-normal: 1.5;
-  --line-height-relaxed: 1.75;
+  /* Line Heights - Exact from Figma */
+  --line-height-xs: 1.667;                     /* 20px for 12px (166.67%) */
+  --line-height-sm: 1.43;                      /* 20px for 14px */
+  --line-height-base: 1.5;                     /* 24px for 16px */
+  --line-height-4xl: 1.333;                    /* 48px for 36px (133.33%) */
   
-  /* Spacing - To be replaced with Figma tokens */
-  --spacing-xs: 0.25rem;
-  --spacing-sm: 0.5rem;
-  --spacing-md: 1rem;
-  --spacing-lg: 1.5rem;
-  --spacing-xl: 2rem;
-  --spacing-2xl: 3rem;
-  --spacing-3xl: 4rem;
-  --spacing-4xl: 6rem;
+  /* Letter Spacing */
+  --letter-spacing-normal: 0;                  /* All text uses 0 */
   
-  /* Border Radius - To be replaced with Figma tokens */
-  --radius-sm: 0.25rem;
-  --radius-md: 0.5rem;
-  --radius-lg: 0.75rem;
-  --radius-xl: 1rem;
+  /* Spacing - Exact from Figma layout */
+  --spacing-xs: 4px;
+  --spacing-sm: 8px;                           /* Dropdown item spacing */
+  --spacing-md: 12px;                          /* Dropdown padding */
+  --spacing-lg: 20px;                          /* Card padding */
+  --spacing-xl: 30px;                          /* Gap between cards */
+  --spacing-2xl: 40px;
+  --spacing-3xl: 48px;
+  
+  /* Border Radius - Exact from Figma */
+  --radius-button: 4px;                        /* Buttons, dropdowns */
+  --radius-card: 8px;                          /* Cards with corner smoothing */
+  --radius-lg: 16px;
   --radius-full: 9999px;
   
-  /* Shadows - To be replaced with Figma tokens */
-  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
-  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
-  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
-  --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+  /* Layout Dimensions - Exact from Figma */
+  --container-width: 1440px;                   /* Total width */
+  --sidebar-width: 270px;                      /* Sidebar width */
+  --header-height: 78px;                       /* Main header */
+  --content-left-margin: 300px;                /* 270px sidebar + 30px gap */
+  --content-width: 1110px;                     /* 1440 - 270 - 60 */
   
-  /* Transitions - To be replaced with Figma tokens */
-  --transition-fast: 150ms ease-in-out;
-  --transition-normal: 250ms ease-in-out;
-  --transition-slow: 350ms ease-in-out;
+  /* Component Dimensions - Exact from Figma */
+  --stat-card-width: 255px;
+  --stat-card-height: 141px;
+  --stat-card-gap: 30px;
+  --chart-main-width: 730px;
+  --chart-main-height: 356px;
+  --chart-side-width: 350px;
+  --dropdown-height: 36px;
+  --dropdown-width: 126px;
+  --dropdown-menu-width: 223px;
+  --dropdown-menu-height: 196px;
+  --dropdown-padding-x: 12px;
+  --dropdown-padding-y: 8px;
+  --table-height: 555px;
   
-  /* Z-index scale */
-  --z-index-dropdown: 1000;
-  --z-index-modal: 1050;
-  --z-index-popover: 1100;
-  --z-index-tooltip: 1150;
+  /* Welcome Section */
+  --welcome-top: 156px;                        /* From top of page */
+  --welcome-font-size: 36px;
+  --welcome-line-height: 48px;
   
-  /* Layout - To be replaced with Figma tokens */
-  --container-max-width: 1280px;
-  --sidebar-width: 240px;
-  --header-height: 64px;
+  /* Calendar Widget */
+  --calendar-width: 180px;
+  --calendar-height: 52px;
+  
+  /* Transitions */
+  --transition-fast: 150ms ease;
+  --transition-base: 250ms ease;
+  
+  /* Z-index */
+  --z-dropdown: 1000;
+  --z-sticky: 1020;
+  --z-fixed: 1030;
+  --z-modal: 1050;
 }
 
-/* Dark mode support (if needed) */
-@media (prefers-color-scheme: dark) {
-  :root {
-    /* Dark mode colors will be defined from Figma */
-  }
+/* CSS Reset for pixel-perfect implementation */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-/* Responsive breakpoints */
-@custom-media --sm (min-width: 640px);
-@custom-media --md (min-width: 768px);
-@custom-media --lg (min-width: 1024px);
-@custom-media --xl (min-width: 1280px);
-@custom-media --2xl (min-width: 1536px);
+/* Base styles */
+body {
+  font-family: var(--font-family-primary);
+  font-size: var(--font-size-base);
+  color: var(--color-text-primary);
+  background-color: var(--color-background);
+  line-height: var(--line-height-base);
+  letter-spacing: var(--letter-spacing-normal);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+}
