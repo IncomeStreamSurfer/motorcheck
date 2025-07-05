@@ -97,18 +97,21 @@ function initAnimatedHexagons() {
         
         console.log(`Creating hexagon ${index} at x:${dataPoint.position.x}, y:${dataPoint.position.y}`);
 
-        // Create SVG hexagon with centered transform origin
+        // Create SVG hexagon exactly like the background pattern
         hexagon.innerHTML = `
-            <svg width="104" height="60" viewBox="0 0 104 60" xmlns="http://www.w3.org/2000/svg" style="position: absolute; left: -13px; top: 0;">
-                <path d="M26 15 L52 0 L78 15 L78 45 L52 60 L26 45 Z" 
-                      fill="${dataPoint.color}" class="hex-fill"
-                      transform-origin="52 30"/>
+            <svg width="156" height="270" viewBox="0 0 156 270" xmlns="http://www.w3.org/2000/svg" style="position: absolute; left: -${dataPoint.position.x}px; top: -${dataPoint.position.y}px;">
+                <defs>
+                    <path id="animHex${index}" d="M26 15 L52 0 L78 15 L78 45 L52 60 L26 45 Z"/>
+                </defs>
+                <use href="#animHex${index}" x="${dataPoint.position.x}" y="${dataPoint.position.y}" 
+                     fill="${dataPoint.color}" class="hex-fill"
+                     transform-origin="${dataPoint.position.x + 52} ${dataPoint.position.y + 30}"/>
             </svg>
             <div class="hex-icon">
                 <i data-lucide="${dataPoint.icon}"></i>
             </div>
             <div class="hex-ripple" style="color: ${dataPoint.color};">
-                <svg width="200" height="200" viewBox="-74 -70 200 200" xmlns="http://www.w3.org/2000/svg" style="position: absolute; left: -74px; top: -70px;">
+                <svg width="200" height="200" viewBox="-61 -70 200 200" xmlns="http://www.w3.org/2000/svg" style="position: absolute; left: -61px; top: -70px;">
                     <path class="hex-ripple-path" 
                           d="M26 15 L52 0 L78 15 L78 45 L52 60 L26 45 Z"
                           transform-origin="52 30"/>

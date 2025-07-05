@@ -90,7 +90,7 @@ body::before {
 .animated-hexagon .hex-fill {
     opacity: 0;
     transform: scale(0);
-    transform-origin: 52px 30px; /* True center of hexagon */
+    transform-origin: inherit; /* Set dynamically in SVG */
     transition: opacity 0.6s ease-out, 
                 transform 0.6s ease-out;
 }
@@ -104,9 +104,9 @@ body::before {
 
 .animated-hexagon .hex-icon {
     position: absolute;
-    /* True center at 52,30 adjusted for container offset */
+    /* Center of the hexagon path is at 52,30 within the 78x60 viewbox */
     top: 30px;
-    left: 39px;
+    left: 52px;
     transform: translate(-50%, -50%) scale(0);
     opacity: 0;
     transition: opacity 0.6s ease-out, transform 0.6s ease-out;
