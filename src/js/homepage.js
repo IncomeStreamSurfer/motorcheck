@@ -113,7 +113,7 @@ function initAnimatedHexagons() {
                 <svg width="200" height="200" viewBox="-61 -70 200 200" xmlns="http://www.w3.org/2000/svg" style="position: absolute; left: -61px; top: -70px;">
                     <path class="hex-ripple-path" 
                           d="M26 15 L52 0 L78 15 L78 45 L52 60 L26 45 Z"
-                          style="animation-delay: ${index * 2}s;"/>
+                          style="animation-delay: ${1.2 + index * 2}s;"/>
                 </svg>
             </div>
         `;
@@ -129,23 +129,24 @@ function initAnimatedHexagons() {
     // Activate hexagons with animation
     const hexagons = container.querySelectorAll('.animated-hexagon');
     hexagons.forEach((hex, index) => {
-        // Sync active class with the animation keyframes
-        setInterval(() => {
-            setTimeout(() => {
-                hex.classList.add('active');
-                setTimeout(() => {
-                    hex.classList.remove('active');
-                }, 7200); // Active for most of the animation (60% of 12s)
-            }, 1200); // Start after arrival animation (10% of 12s)
-        }, 12000); // Match the animation duration
+        // Calculate the stagger delay for this hexagon
+        const staggerDelay = index * 2000; // 2s between each hexagon
         
-        // Initial activation for immediate effect
-        setTimeout(() => {
+        // Function to activate/deactivate hexagon
+        function activateHexagon() {
             hex.classList.add('active');
             setTimeout(() => {
                 hex.classList.remove('active');
-            }, 7200);
-        }, 1200 + (index * 2000)); // Stagger initial activation
+            }, 7200); // Active for 60% of the 12s cycle
+        }
+        
+        // Initial activation with stagger
+        setTimeout(() => {
+            activateHexagon();
+            
+            // Set up repeating activation that maintains the stagger
+            setInterval(activateHexagon, 12000); // Repeat every 12s
+        }, 1200 + staggerDelay); // Start after arrival animation (10% of 12s) plus stagger
     });
 }
 
