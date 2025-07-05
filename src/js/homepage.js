@@ -112,8 +112,7 @@ function initAnimatedHexagons() {
             <div class="hex-ripple" style="color: ${dataPoint.color};">
                 <svg width="200" height="200" viewBox="-61 -70 200 200" xmlns="http://www.w3.org/2000/svg" style="position: absolute; left: -61px; top: -70px;">
                     <path class="hex-ripple-path" 
-                          d="M26 15 L52 0 L78 15 L78 45 L52 60 L26 45 Z"
-                          style="animation-delay: ${1.2 + index * 2}s;"/>
+                          d="M26 15 L52 0 L78 15 L78 45 L52 60 L26 45 Z"/>
                 </svg>
             </div>
         `;
@@ -128,25 +127,48 @@ function initAnimatedHexagons() {
 
     // Activate hexagons with animation
     const hexagons = container.querySelectorAll('.animated-hexagon');
+    const CYCLE_DURATION = 12000; // 12 seconds per cycle
+    const STAGGER_DELAY = 2000; // 2 seconds between each hexagon
+    
     hexagons.forEach((hex, index) => {
-        // Calculate the stagger delay for this hexagon
-        const staggerDelay = index * 2000; // 2s between each hexagon
+        const delay = index * STAGGER_DELAY;
         
-        // Function to activate/deactivate hexagon
-        function activateHexagon() {
+        // Animation sequence for each hexagon
+        function runAnimationCycle() {
+            // Phase 1: Arrive (0-800ms)
+            hex.classList.add('arriving');
             hex.classList.add('active');
+            
+            setTimeout(() => {
+                hex.classList.remove('arriving');
+            }, 800);
+            
+            // Phase 2: Trigger ripple (800ms)
+            setTimeout(() => {
+                hex.classList.add('ripple');
+                
+                // Remove ripple class after animation
+                setTimeout(() => {
+                    hex.classList.remove('ripple');
+                }, 1500);
+            }, 800);
+            
+            // Phase 3: Hold active (800ms - 8000ms)
+            // Already active from phase 1
+            
+            // Phase 4: Fade out (8000ms - 10000ms)
             setTimeout(() => {
                 hex.classList.remove('active');
-            }, 7200); // Active for 60% of the 12s cycle
+            }, 8000);
         }
         
-        // Initial activation with stagger
+        // Start first cycle with stagger
         setTimeout(() => {
-            activateHexagon();
+            runAnimationCycle();
             
-            // Set up repeating activation that maintains the stagger
-            setInterval(activateHexagon, 12000); // Repeat every 12s
-        }, 1200 + staggerDelay); // Start after arrival animation (10% of 12s) plus stagger
+            // Repeat cycle maintaining the offset
+            setInterval(runAnimationCycle, CYCLE_DURATION);
+        }, delay);
     });
 }
 

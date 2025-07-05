@@ -74,44 +74,11 @@ body::before {
     overflow: visible;
 }
 
-.hex-ripple-path {
-    fill: none;
-    stroke: currentColor;
-    stroke-width: 2;
-    transform-origin: 52px 30px;
-    opacity: 0;
-    animation: hexRipple 12s infinite;
-}
-
-@keyframes hexRipple {
-    0%, 9% {
-        transform: scale(0);
-        opacity: 0;
-    }
-    10% {
-        transform: scale(1);
-        opacity: 0.6;
-    }
-    13% {
-        transform: scale(1.8);
-        opacity: 0.3;
-    }
-    16% {
-        transform: scale(2.5);
-        opacity: 0;
-    }
-    100% {
-        transform: scale(2.5);
-        opacity: 0;
-    }
-}
 
 .animated-hexagon {
     position: absolute;
     width: 78px;
     height: 60px;
-    opacity: 0;
-    animation: hexagonPulse 12s infinite;
     overflow: visible;
 }
 
@@ -122,7 +89,14 @@ body::before {
 
 .animated-hexagon .hex-fill {
     opacity: 0;
-    transition: opacity 0.5s ease;
+    transform: scale(0.3);
+    transition: opacity 0.8s cubic-bezier(0.4, 0, 0.2, 1), 
+                transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.animated-hexagon:not(.active) .hex-fill {
+    transition: opacity 2s ease-out, 
+                transform 2s ease-out;
 }
 
 .animated-hexagon .hex-icon {
@@ -132,7 +106,7 @@ body::before {
     left: 52px;
     transform: translate(-50%, -50%) scale(0.8);
     opacity: 0;
-    transition: all 0.5s ease;
+    transition: opacity 0.5s ease, transform 0.5s ease;
     color: white;
     width: 24px;
     height: 24px;
@@ -140,6 +114,10 @@ body::before {
     align-items: center;
     justify-content: center;
     z-index: 2;
+}
+
+.animated-hexagon:not(.active) .hex-icon {
+    transition: opacity 2s ease-out, transform 2s ease-out;
 }
 
 .animated-hexagon .hex-icon i {
@@ -150,6 +128,11 @@ body::before {
 
 .animated-hexagon.active .hex-fill {
     opacity: 0.9;
+    transform: scale(1);
+}
+
+.animated-hexagon.arriving .hex-fill {
+    transform: scale(1.1);
 }
 
 .animated-hexagon.active .hex-icon {
@@ -157,49 +140,26 @@ body::before {
     transform: translate(-50%, -50%) scale(1);
 }
 
-/* Individual hexagon animations with staggered delays */
-.animated-hexagon:nth-child(1) { animation-delay: 0s; }
-.animated-hexagon:nth-child(2) { animation-delay: 2s; }
-.animated-hexagon:nth-child(3) { animation-delay: 4s; }
-.animated-hexagon:nth-child(4) { animation-delay: 6s; }
-.animated-hexagon:nth-child(5) { animation-delay: 8s; }
-.animated-hexagon:nth-child(6) { animation-delay: 10s; }
+/* Hex ripple without animation, controlled by JS */
+.hex-ripple-path {
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 2;
+    transform-origin: 52px 30px;
+    opacity: 0;
+    transform: scale(0);
+    transition: opacity 0.3s ease-out, transform 1.5s ease-out;
+}
 
-@keyframes hexagonPulse {
-    0% { 
-        opacity: 0;
-        transform: scale(0.3);
-    }
-    5% {
-        opacity: 1;
-        transform: scale(1.1);
-    }
-    8% {
-        opacity: 1;
-        transform: scale(0.95);
-    }
-    10% {
-        opacity: 1;
-        transform: scale(1);
-    }
-    70% {
-        /* Hold steady for most of the cycle */
-        opacity: 1;
-        transform: scale(1);
-    }
-    90% {
-        /* Start fade out */
-        opacity: 0.5;
-        transform: scale(0.95);
-    }
-    95% {
-        opacity: 0;
-        transform: scale(0.8);
-    }
-    100% {
-        opacity: 0;
-        transform: scale(0.3);
-    }
+.animated-hexagon.ripple .hex-ripple-path {
+    opacity: 0.6;
+    transform: scale(2.5);
+}
+
+.animated-hexagon:not(.ripple) .hex-ripple-path {
+    opacity: 0;
+    transform: scale(0);
+    transition: opacity 0.5s ease-out 0.5s, transform 0.1s ease-out 1s;
 }
 
 /* Header Styles - Sophisticated & Modern */
