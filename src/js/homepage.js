@@ -97,14 +97,11 @@ function initAnimatedHexagons() {
         
         console.log(`Creating hexagon ${index} at x:${dataPoint.position.x}, y:${dataPoint.position.y}`);
 
-        // Create SVG hexagon exactly like the background pattern
+        // Create SVG hexagon with centered transform origin
         hexagon.innerHTML = `
-            <svg width="156" height="270" viewBox="0 0 156 270" xmlns="http://www.w3.org/2000/svg" style="position: absolute; left: -${dataPoint.position.x}px; top: -${dataPoint.position.y}px;">
-                <defs>
-                    <path id="animHex${index}" d="M26 15 L52 0 L78 15 L78 45 L52 60 L26 45 Z"/>
-                </defs>
-                <use href="#animHex${index}" x="${dataPoint.position.x}" y="${dataPoint.position.y}" 
-                     fill="${dataPoint.color}" class="hex-fill"/>
+            <svg width="78" height="60" viewBox="0 0 78 60" xmlns="http://www.w3.org/2000/svg" style="position: absolute; left: 0; top: 0;">
+                <path d="M26 15 L52 0 L78 15 L78 45 L52 60 L26 45 Z" 
+                      fill="${dataPoint.color}" class="hex-fill"/>
             </svg>
             <div class="hex-icon">
                 <i data-lucide="${dataPoint.icon}"></i>
