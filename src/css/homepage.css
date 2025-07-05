@@ -89,25 +89,27 @@ body::before {
 
 .animated-hexagon .hex-fill {
     opacity: 0;
-    transform: scale(0.3);
-    transform-origin: 39px 30px; /* Center of the 78x60 hexagon */
-    transition: opacity 0.8s cubic-bezier(0.4, 0, 0.2, 1), 
-                transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+    transform: scale(0);
+    transform-origin: 52px 30px; /* True center of hexagon */
+    transition: opacity 0.6s ease-out, 
+                transform 0.6s ease-out;
 }
 
 .animated-hexagon:not(.active) .hex-fill {
-    transition: opacity 2s ease-out, 
-                transform 2s ease-out;
+    opacity: 0;
+    transform: scale(0);
+    transition: opacity 1.5s ease-in, 
+                transform 1.5s ease-in;
 }
 
 .animated-hexagon .hex-icon {
     position: absolute;
-    /* Center of the hexagon path is at 52,30 within the 78x60 viewbox */
+    /* True center at 52,30 adjusted for container offset */
     top: 30px;
-    left: 52px;
-    transform: translate(-50%, -50%) scale(0.8);
+    left: 39px;
+    transform: translate(-50%, -50%) scale(0);
     opacity: 0;
-    transition: opacity 0.5s ease, transform 0.5s ease;
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
     color: white;
     width: 24px;
     height: 24px;
@@ -118,7 +120,9 @@ body::before {
 }
 
 .animated-hexagon:not(.active) .hex-icon {
-    transition: opacity 2s ease-out, transform 2s ease-out;
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(0);
+    transition: opacity 1.5s ease-in, transform 1.5s ease-in;
 }
 
 .animated-hexagon .hex-icon i {
@@ -148,7 +152,7 @@ body::before {
     stroke-width: 2;
     transform-origin: 52px 30px;
     opacity: 0;
-    transform: scale(1);
+    transform: scale(0);
 }
 
 .animated-hexagon.ripple .hex-ripple-path {
@@ -159,7 +163,7 @@ body::before {
 
 .animated-hexagon:not(.ripple) .hex-ripple-path {
     opacity: 0;
-    transform: scale(1);
+    transform: scale(0);
     transition: none;
 }
 
