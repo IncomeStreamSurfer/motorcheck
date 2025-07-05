@@ -105,6 +105,7 @@ function initAnimatedHexagons() {
             <svg width="104" height="90" viewBox="0 0 104 90" xmlns="http://www.w3.org/2000/svg" class="hex-svg">
                 <path d="M26 15 L52 0 L78 15 L78 45 L52 60 L26 45 Z" 
                       fill="${dataPoint.color}" class="hex-fill"
+                      stroke-linejoin="round" stroke-linecap="round"
                       transform-origin="52 30"/>
             </svg>
             <div class="hex-icon">
@@ -114,6 +115,7 @@ function initAnimatedHexagons() {
                 <svg width="104" height="90" viewBox="0 0 104 90" xmlns="http://www.w3.org/2000/svg" class="ripple-svg">
                     <path class="hex-ripple-path" 
                           d="M26 15 L52 0 L78 15 L78 45 L52 60 L26 45 Z"
+                          stroke-linejoin="round" stroke-linecap="round"
                           transform-origin="52 30"/>
                 </svg>
             </div>
