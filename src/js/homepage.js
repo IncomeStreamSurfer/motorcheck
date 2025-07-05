@@ -17,6 +17,7 @@ document.addEventListener('DOMContentLoaded', function() {
     // Mobile menu
     initMobileMenu();
 
+
     // Interactive demo
     initInteractiveDemo();
 
@@ -211,6 +212,7 @@ function initMobileMenu() {
         });
     }
 }
+
 
 /**
  * Interactive demo functionality

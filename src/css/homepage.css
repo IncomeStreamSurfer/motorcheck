@@ -222,7 +222,7 @@ body::before {
 
 .logo-text {
     font-size: 20px;
-    font-weight: 700;
+    font-weight: 800;
     color: var(--color-text-primary);
     font-family: var(--font-family-heading);
 }
@@ -239,7 +239,7 @@ body::before {
 .nav-link {
     color: #64748b;
     text-decoration: none;
-    font-weight: 500;
+    font-weight: 800;
     font-size: 15px;
     position: relative;
     transition: all 0.2s ease;
@@ -254,7 +254,7 @@ body::before {
 
 .nav-link.active {
     color: var(--color-text-primary);
-    font-weight: 600;
+    font-weight: 800;
 }
 
 .nav-right {
@@ -272,7 +272,7 @@ body::before {
     color: white;
     padding: 8px 18px;
     border-radius: 6px;
-    font-weight: 600;
+    font-weight: 800;
     font-size: 14px;
     text-decoration: none;
     transition: all 0.2s ease;
@@ -299,7 +299,7 @@ body::before {
     border: 1.5px solid var(--color-primary);
     padding: 8px 18px;
     border-radius: 6px;
-    font-weight: 600;
+    font-weight: 800;
     font-size: 14px;
     text-decoration: none;
     transition: all 0.2s ease;
@@ -485,20 +485,20 @@ body::before {
     justify-content: center;
     color: white;
     font-size: 14px;
-    font-weight: 700;
+    font-weight: 800;
 }
 
 .badge-text {
     font-size: 14px;
-    font-weight: 600;
+    font-weight: 800;
     color: #4B5563;
 }
 
 /* Main Title */
 .hero-title {
-    font-family: 'Lexend', var(--font-family-heading);
+    font-family: var(--font-family-heading);
     font-size: 48px !important;
-    font-weight: 700;
+    font-weight: 800;
     line-height: 1.2;
     color: #020202;
     margin-bottom: 20px;
@@ -509,6 +509,10 @@ body::before {
     color: #44BF73;
     position: relative;
     display: inline-block;
+}
+
+.hero-accent {
+    color: #44BF73;
 }
 
 /* Subtitle */
@@ -532,7 +536,7 @@ body::before {
     padding: 16px 32px;
     border-radius: 8px;
     font-size: 16px;
-    font-weight: 600;
+    font-weight: 800;
     text-decoration: none;
     transition: all 0.3s ease;
     box-shadow: 0 4px 14px rgba(68, 191, 115, 0.25);
@@ -554,6 +558,82 @@ body::before {
     font-size: 14px;
     color: #9CA3AF;
     margin-bottom: 60px;
+}
+
+/* Hero CTA Button - matching previous design */
+.hero-cta-button {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: #44BF73;
+    color: white;
+    padding: 18px 32px;
+    border-radius: 10px;
+    font-size: 18px;
+    font-weight: 800;
+    font-family: var(--font-family-heading);
+    text-decoration: none;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 14px rgba(68, 191, 115, 0.25);
+    margin-bottom: 24px;
+}
+
+.hero-cta-button:hover {
+    background: #3BA865;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(68, 191, 115, 0.35);
+}
+
+.hero-cta-button i {
+    width: 20px;
+    height: 20px;
+}
+
+/* Hero Features */
+.hero-cta-wrapper {
+    text-align: center;
+}
+
+.hero-features {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 32px;
+    flex-wrap: wrap;
+}
+
+.hero-feature {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 15px;
+    color: #6B7280;
+}
+
+.hero-feature .feature-icon {
+    width: 18px;
+    height: 18px;
+    color: #9CA3AF;
+}
+
+/* Star Rating */
+.stars-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 2px;
+}
+
+.star-filled {
+    width: 16px;
+    height: 16px;
+    color: #FCD34D;
+    fill: #FCD34D;
+}
+
+.hero-feature strong {
+    color: #020202;
+    font-weight: 800;
+    font-family: var(--font-family-heading);
 }
 
 /* Social Proof */
@@ -593,7 +673,7 @@ body::before {
 
 .social-proof-number {
     font-size: 24px;
-    font-weight: 700;
+    font-weight: 800;
     color: #020202;
     line-height: 1;
 }
@@ -658,7 +738,7 @@ body::before {
 .preview-title {
     font-size: 14px;
     color: #6B7280;
-    font-weight: 500;
+    font-weight: 800;
 }
 
 /* Code Preview */
@@ -726,7 +806,7 @@ body::before {
     gap: 8px;
     padding: 16px 36px;
     border-radius: 8px;
-    font-weight: 600;
+    font-weight: 800;
     font-size: 17px;
     text-decoration: none;
     transition: all 0.3s var(--animation-smooth);
@@ -810,7 +890,7 @@ body::before {
     color: var(--color-text-secondary);
     margin-bottom: 40px;
     font-size: 14px;
-    font-weight: 500;
+    font-weight: 800;
     text-transform: uppercase;
     letter-spacing: 0.1em;
 }
@@ -826,7 +906,7 @@ body::before {
 .trust-logo {
     color: #b0b7c3;
     font-size: 22px;
-    font-weight: 600;
+    font-weight: 800;
     opacity: 0.5;
     transition: all 0.3s ease;
     position: relative;
@@ -887,7 +967,7 @@ body::before {
     padding: 8px 20px;
     border-radius: 30px;
     font-size: 13px;
-    font-weight: 600;
+    font-weight: 800;
     text-transform: uppercase;
     letter-spacing: 0.1em;
     margin-bottom: 20px;
@@ -1024,7 +1104,7 @@ body::before {
 .feature-card h3 {
     font-family: var(--font-family-heading);
     font-size: 24px;
-    font-weight: 700;
+    font-weight: 800;
     margin-bottom: 16px;
     color: var(--color-text-primary);
     transition: color 0.3s ease;
@@ -1043,7 +1123,7 @@ body::before {
 
 .feature-link {
     color: #44BF73;
-    font-weight: 600;
+    font-weight: 800;
     text-decoration: none;
     display: inline-flex;
     align-items: center;
@@ -1289,7 +1369,7 @@ body::before {
 }
 
 .demo-feature-text h4 {
-    font-weight: 600;
+    font-weight: 800;
     color: var(--color-text-primary);
     margin-bottom: 4px;
 }
@@ -1324,7 +1404,7 @@ body::before {
     background: transparent;
     border: none;
     border-radius: 8px;
-    font-weight: 600;
+    font-weight: 800;
     color: var(--color-text-secondary);
     cursor: pointer;
     transition: all 0.3s ease;
@@ -1366,7 +1446,7 @@ body::before {
     color: white;
     border: none;
     border-radius: 12px;
-    font-weight: 600;
+    font-weight: 800;
     cursor: pointer;
     transition: all 0.3s ease;
     display: flex;
@@ -1476,7 +1556,7 @@ body::before {
 
 .calculator-controls h3 {
     font-size: 24px;
-    font-weight: 700;
+    font-weight: 800;
     margin-bottom: 32px;
     color: var(--color-text-primary);
 }
@@ -1493,13 +1573,13 @@ body::before {
 }
 
 .slider-label span {
-    font-weight: 600;
+    font-weight: 800;
     color: var(--color-text-primary);
 }
 
 .slider-value {
     font-size: 20px;
-    font-weight: 700;
+    font-weight: 800;
     color: var(--color-accent);
 }
 
@@ -1605,7 +1685,7 @@ body::before {
 }
 
 .breakdown-value {
-    font-weight: 600;
+    font-weight: 800;
     color: var(--color-text-primary);
 }
 
@@ -1615,7 +1695,7 @@ body::before {
     color: #10b981;
     padding: 12px 24px;
     border-radius: 30px;
-    font-weight: 600;
+    font-weight: 800;
     margin-top: 24px;
     font-size: 15px;
 }
@@ -1667,7 +1747,7 @@ body::before {
 
 .footer-logo span {
     font-size: 20px;
-    font-weight: 700;
+    font-weight: 800;
     color: white;
 }
 
@@ -1708,7 +1788,7 @@ body::before {
 
 .footer-section h3 {
     font-size: 16px;
-    font-weight: 700;
+    font-weight: 800;
     margin-bottom: 24px;
     color: white;
 }

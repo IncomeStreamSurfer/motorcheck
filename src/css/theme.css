@@ -6,8 +6,8 @@
 /* Import Manrope font - weights used in design: 500, 600 */
 @import url('https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&display=swap');
 
-/* Import Lexend for headings */
-@import url('https://fonts.googleapis.com/css2?family=Lexend:wght@400;500;600;700;800&display=swap');
+/* Import DM Sans for headings and buttons - weight 800 for all titles */
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@800&display=swap');
 
 :root {
   /* Primary Colors - Exact from Figma */
@@ -52,7 +52,7 @@
   
   /* Typography - Exact from Figma */
   --font-family-primary: 'Manrope', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-  --font-family-heading: 'Lexend', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-family-heading: 'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   
   /* Font Sizes - Exact from design */
   --font-size-xs: 12px;                        /* Small text like "View All" */
@@ -158,7 +158,7 @@ body {
   overflow-x: hidden;
 }
 
-/* Headings use Lexend */
+/* Headings use DM Sans 800 */
 h1, h2, h3, h4, h5, h6 {
   font-family: var(--font-family-heading);
   font-weight: 600;
