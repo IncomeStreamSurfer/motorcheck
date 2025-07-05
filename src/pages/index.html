@@ -14,9 +14,9 @@
     <meta property="og:image" content="https://motorcheck.co.uk/og-image.png">
     
     <!-- Styles -->
-    <link rel="stylesheet" href="../css/theme.css?v=49">
-    <link rel="stylesheet" href="../css/main.css?v=49">
-    <link rel="stylesheet" href="../css/homepage.css?v=49">
+    <link rel="stylesheet" href="../css/theme.css?v=64">
+    <link rel="stylesheet" href="../css/main.css?v=64">
+    <link rel="stylesheet" href="../css/homepage.css?v=64">
     
     <!-- Icons -->
     <script src="https://unpkg.com/lucide@latest"></script>
@@ -30,20 +30,23 @@
         <nav class="main-nav">
             <div class="nav-container">
                 <div class="nav-left">
-                    <div class="logo">
+                    <a href="/" class="logo">
                         <img src="../assets/logo.png" alt="MotorCheck" class="logo-img">
-                    </div>
+                    </a>
                 </div>
                 <div class="nav-center">
                     <a href="#product" class="nav-link">Product</a>
                     <a href="#developers" class="nav-link">Developers</a>
                     <a href="#pricing" class="nav-link">Pricing</a>
-                    <a href="/docs" class="nav-link">Documentation</a>
+                    <a href="/docs" class="nav-link">Docs</a>
                     <a href="#company" class="nav-link">Company</a>
                 </div>
                 <div class="nav-right">
-                    <a href="/login" class="nav-link">Sign In</a>
-                    <a href="/signup" class="cta-button">Start Building</a>
+                    <a href="/login" class="btn-outline">Sign In</a>
+                    <a href="/signup" class="cta-button">
+                        Start Building
+                        <i data-lucide="arrow-right" style="width: 14px; height: 14px;"></i>
+                    </a>
                 </div>
                 <!-- Mobile menu toggle -->
                 <button class="mobile-menu-toggle" id="mobileMenuToggle">
@@ -64,8 +67,8 @@
             
             <!-- Main Title -->
             <h1 class="hero-title">
-                Motor Data Infrastructure for<br>
-                Modern Applications
+                Motor data infrastructure for<br>
+                modern applications
             </h1>
             
             <!-- Subtitle -->
@@ -191,7 +194,7 @@
             <div class="features-grid">
                 <div class="feature-card">
                     <div class="feature-icon">
-                        <i data-lucide="zap"></i>
+                        <i data-lucide="bolt"></i>
                     </div>
                     <h3>Instant Integration</h3>
                     <p>Go from sign-up to production in under 5 minutes. No sales calls, no waiting weeks for API keys.</p>
@@ -202,7 +205,7 @@
                 </div>
                 <div class="feature-card">
                     <div class="feature-icon">
-                        <i data-lucide="eye"></i>
+                        <i data-lucide="calculator"></i>
                     </div>
                     <h3>Transparent Pricing</h3>
                     <p>Know exactly what you'll pay. No hidden fees, no minimum commitments. PAYG from £0.04 per check.</p>
@@ -213,7 +216,7 @@
                 </div>
                 <div class="feature-card">
                     <div class="feature-icon">
-                        <i data-lucide="rocket"></i>
+                        <i data-lucide="gauge"></i>
                     </div>
                     <h3>Lightning Performance</h3>
                     <p>Average response time under 200ms. Built on modern infrastructure with edge locations across the UK.</p>
@@ -224,7 +227,7 @@
                 </div>
                 <div class="feature-card">
                     <div class="feature-icon">
-                        <i data-lucide="code-2"></i>
+                        <i data-lucide="terminal"></i>
                     </div>
                     <h3>Developer First</h3>
                     <p>RESTful APIs with predictable responses. SDKs for all major languages. Interactive documentation.</p>
@@ -235,7 +238,7 @@
                 </div>
                 <div class="feature-card">
                     <div class="feature-icon">
-                        <i data-lucide="shield-check"></i>
+                        <i data-lucide="shield"></i>
                     </div>
                     <h3>Enterprise Ready</h3>
                     <p>SOC 2 Type II certified. GDPR compliant. 99.9% uptime SLA with transparent status page.</p>
@@ -246,7 +249,7 @@
                 </div>
                 <div class="feature-card">
                     <div class="feature-icon">
-                        <i data-lucide="webhook"></i>
+                        <i data-lucide="activity"></i>
                     </div>
                     <h3>Real-time Updates</h3>
                     <p>Webhooks for async operations. Event streams for live data. Built-in retry logic and delivery guarantees.</p>
@@ -504,6 +507,6 @@
         </div>
     </footer>
 
-    <script src="../js/homepage.js?v=49"></script>
+    <script src="../js/homepage.js?v=58"></script>
 </body>
 </html>
