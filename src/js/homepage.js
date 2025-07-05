@@ -98,24 +98,22 @@ function initAnimatedHexagons() {
         // Position at exact grid location
         hexagon.style.left = `${dataPoint.position.x}px`;
         hexagon.style.top = `${dataPoint.position.y}px`;
+        hexagon.style.width = '78px';
+        hexagon.style.height = '60px';
         
         hexagon.innerHTML = `
-            <div class="hex-scale-wrapper">
-                <svg width="78" height="60" viewBox="0 0 78 60" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M0 15 L26 0 L52 15 L52 45 L26 60 L0 45 Z" 
-                          fill="${dataPoint.color}" class="hex-fill"
-                          transform="translate(26, 0)"/>
+            <svg width="78" height="60" viewBox="0 0 78 60" xmlns="http://www.w3.org/2000/svg" class="hex-svg">
+                <path d="M26 15 L52 0 L78 15 L78 45 L52 60 L26 45 Z" 
+                      fill="${dataPoint.color}" class="hex-fill"/>
+            </svg>
+            <div class="hex-icon">
+                <i data-lucide="${dataPoint.icon}"></i>
+            </div>
+            <div class="hex-ripple" style="color: ${dataPoint.color};">
+                <svg width="156" height="120" viewBox="-39 -30 156 120" xmlns="http://www.w3.org/2000/svg" style="position: absolute; left: -39px; top: -30px;">
+                    <path class="hex-ripple-path" 
+                          d="M26 15 L52 0 L78 15 L78 45 L52 60 L26 45 Z"/>
                 </svg>
-                <div class="hex-icon">
-                    <i data-lucide="${dataPoint.icon}"></i>
-                </div>
-                <div class="hex-ripple" style="color: ${dataPoint.color};">
-                    <svg width="156" height="120" viewBox="-39 -30 156 120" xmlns="http://www.w3.org/2000/svg" style="position: absolute; left: -39px; top: -30px;">
-                        <path class="hex-ripple-path" 
-                              d="M0 15 L26 0 L52 15 L52 45 L26 60 L0 45 Z"
-                              transform="translate(26, 0)"/>
-                    </svg>
-                </div>
             </div>
         `;
 

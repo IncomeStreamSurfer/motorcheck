@@ -77,42 +77,36 @@ body::before {
 
 .animated-hexagon {
     position: absolute;
-    overflow: visible;
-}
-
-.hex-scale-wrapper {
-    position: relative;
-    width: 78px;
-    height: 60px;
     transform: scale(0);
     transform-origin: 39px 30px;
     opacity: 0;
-    transition: all 0.6s ease-out;
+    transition: transform 0.6s ease-out, opacity 0.6s ease-out;
 }
 
-.animated-hexagon.active .hex-scale-wrapper {
+.animated-hexagon.active {
     transform: scale(1);
     opacity: 1;
 }
 
-.animated-hexagon:not(.active) .hex-scale-wrapper {
-    transition: all 1.5s ease-in;
+.animated-hexagon:not(.active) {
+    transition: transform 1.5s ease-in, opacity 1.5s ease-in;
 }
 
-.animated-hexagon svg {
+.animated-hexagon.arriving {
+    transform: scale(1.05);
+}
+
+.hex-svg {
     position: absolute;
-    overflow: visible;
-}
-
-.animated-hexagon .hex-fill {
-    /* No individual scaling needed - wrapper handles it */
+    top: 0;
+    left: 0;
 }
 
 .animated-hexagon .hex-icon {
     position: absolute;
-    /* Center of hexagon */
+    /* True center of hexagon shape */
     top: 30px;
-    left: 39px;
+    left: 52px;
     transform: translate(-50%, -50%);
     color: white;
     width: 24px;
@@ -129,29 +123,35 @@ body::before {
     stroke-width: 2;
 }
 
-.animated-hexagon.arriving .hex-scale-wrapper {
-    transform: scale(1.05);
+
+/* Hex ripple */
+.hex-ripple {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
 }
 
-/* Hex ripple without animation, controlled by JS */
 .hex-ripple-path {
     fill: none;
     stroke: currentColor;
     stroke-width: 2;
-    transform-origin: 39px 30px; /* Center of hexagon */
+    transform-origin: 52px 30px;
     opacity: 0;
-    transform: scale(1) translate(26px, 0);
+    transform: scale(1);
 }
 
 .animated-hexagon.ripple .hex-ripple-path {
     opacity: 0.6;
-    transform: scale(2.5) translate(26px, 0);
+    transform: scale(2.5);
     transition: opacity 0.3s ease-out, transform 1.5s ease-out;
 }
 
 .animated-hexagon:not(.ripple) .hex-ripple-path {
     opacity: 0;
-    transform: scale(1) translate(26px, 0);
+    transform: scale(1);
     transition: none;
 }
 
