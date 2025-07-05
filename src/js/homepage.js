@@ -135,31 +135,34 @@ function initAnimatedHexagons() {
         
         // Animation sequence for each hexagon
         function runAnimationCycle() {
-            // Phase 1: Arrive (0-800ms)
-            hex.classList.add('arriving');
-            hex.classList.add('active');
+            // Ensure clean state at start of each cycle
+            hex.classList.remove('active', 'arriving', 'ripple');
             
+            // Small delay to ensure clean state
             setTimeout(() => {
-                hex.classList.remove('arriving');
-            }, 800);
-            
-            // Phase 2: Trigger ripple (800ms)
-            setTimeout(() => {
-                hex.classList.add('ripple');
+                // Phase 1: Arrive and show hexagon
+                hex.classList.add('arriving');
+                hex.classList.add('active');
                 
-                // Remove ripple class after animation
                 setTimeout(() => {
-                    hex.classList.remove('ripple');
-                }, 1500);
-            }, 800);
-            
-            // Phase 3: Hold active (800ms - 8000ms)
-            // Already active from phase 1
-            
-            // Phase 4: Fade out (8000ms - 10000ms)
-            setTimeout(() => {
-                hex.classList.remove('active');
-            }, 8000);
+                    hex.classList.remove('arriving');
+                    
+                    // Phase 2: Trigger ripple when hexagon is fully visible
+                    setTimeout(() => {
+                        hex.classList.add('ripple');
+                        
+                        // Remove ripple class after animation completes
+                        setTimeout(() => {
+                            hex.classList.remove('ripple');
+                        }, 1500);
+                    }, 100); // Small delay to ensure hexagon is settled
+                }, 500);
+                
+                // Phase 3: Fade out
+                setTimeout(() => {
+                    hex.classList.remove('active');
+                }, 7000);
+            }, 50);
         }
         
         // Start first cycle with stagger
