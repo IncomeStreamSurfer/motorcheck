@@ -95,9 +95,9 @@ function initAnimatedHexagons() {
         
         console.log(`Creating hexagon ${index} at x:${dataPoint.position.x}, y:${dataPoint.position.y}`);
 
-        // Position accounting for hexagon path offset (path starts at 26,15 not 0,0)
-        hexagon.style.left = `${dataPoint.position.x - 26}px`;
-        hexagon.style.top = `${dataPoint.position.y - 15}px`;
+        // Position to align exactly with background grid
+        hexagon.style.left = `${dataPoint.position.x}px`;
+        hexagon.style.top = `${dataPoint.position.y}px`;
         hexagon.style.width = '104px';
         hexagon.style.height = '90px';
         
