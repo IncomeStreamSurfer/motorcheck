@@ -77,9 +77,26 @@ body::before {
 
 .animated-hexagon {
     position: absolute;
+    overflow: visible;
+}
+
+.hex-scale-wrapper {
+    position: relative;
     width: 78px;
     height: 60px;
-    overflow: visible;
+    transform: scale(0);
+    transform-origin: 39px 30px;
+    opacity: 0;
+    transition: all 0.6s ease-out;
+}
+
+.animated-hexagon.active .hex-scale-wrapper {
+    transform: scale(1);
+    opacity: 1;
+}
+
+.animated-hexagon:not(.active) .hex-scale-wrapper {
+    transition: all 1.5s ease-in;
 }
 
 .animated-hexagon svg {
@@ -88,28 +105,15 @@ body::before {
 }
 
 .animated-hexagon .hex-fill {
-    opacity: 0;
-    transform: scale(0);
-    transform-origin: inherit; /* Set dynamically in SVG */
-    transition: opacity 0.6s ease-out, 
-                transform 0.6s ease-out;
-}
-
-.animated-hexagon:not(.active) .hex-fill {
-    opacity: 0;
-    transform: scale(0);
-    transition: opacity 1.5s ease-in, 
-                transform 1.5s ease-in;
+    /* No individual scaling needed - wrapper handles it */
 }
 
 .animated-hexagon .hex-icon {
     position: absolute;
-    /* Center of the hexagon path is at 52,30 within the 78x60 viewbox */
+    /* Center of hexagon */
     top: 30px;
-    left: 52px;
-    transform: translate(-50%, -50%) scale(0);
-    opacity: 0;
-    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+    left: 39px;
+    transform: translate(-50%, -50%);
     color: white;
     width: 24px;
     height: 24px;
@@ -119,30 +123,14 @@ body::before {
     z-index: 2;
 }
 
-.animated-hexagon:not(.active) .hex-icon {
-    opacity: 0;
-    transform: translate(-50%, -50%) scale(0);
-    transition: opacity 1.5s ease-in, transform 1.5s ease-in;
-}
-
 .animated-hexagon .hex-icon i {
     width: 20px;
     height: 20px;
     stroke-width: 2;
 }
 
-.animated-hexagon.active .hex-fill {
-    opacity: 0.9;
-    transform: scale(1);
-}
-
-.animated-hexagon.arriving .hex-fill {
+.animated-hexagon.arriving .hex-scale-wrapper {
     transform: scale(1.05);
-}
-
-.animated-hexagon.active .hex-icon {
-    opacity: 1;
-    transform: translate(-50%, -50%) scale(1);
 }
 
 /* Hex ripple without animation, controlled by JS */
@@ -150,20 +138,20 @@ body::before {
     fill: none;
     stroke: currentColor;
     stroke-width: 2;
-    transform-origin: 52px 30px;
+    transform-origin: 39px 30px; /* Center of hexagon */
     opacity: 0;
-    transform: scale(0);
+    transform: scale(1) translate(26px, 0);
 }
 
 .animated-hexagon.ripple .hex-ripple-path {
     opacity: 0.6;
-    transform: scale(2.5);
+    transform: scale(2.5) translate(26px, 0);
     transition: opacity 0.3s ease-out, transform 1.5s ease-out;
 }
 
 .animated-hexagon:not(.ripple) .hex-ripple-path {
     opacity: 0;
-    transform: scale(0);
+    transform: scale(1) translate(26px, 0);
     transition: none;
 }
 

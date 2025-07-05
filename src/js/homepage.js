@@ -91,31 +91,31 @@ function initAnimatedHexagons() {
         const hexagon = document.createElement('div');
         hexagon.className = 'animated-hexagon';
         
-        // Apply exact position to match background hexagons
-        hexagon.style.left = `${dataPoint.position.x}px`;
-        hexagon.style.top = `${dataPoint.position.y}px`;
+        // Remove redundant positioning (already set below)
         
         console.log(`Creating hexagon ${index} at x:${dataPoint.position.x}, y:${dataPoint.position.y}`);
 
-        // Create SVG hexagon exactly like the background pattern
+        // Position at exact grid location
+        hexagon.style.left = `${dataPoint.position.x}px`;
+        hexagon.style.top = `${dataPoint.position.y}px`;
+        
         hexagon.innerHTML = `
-            <svg width="156" height="270" viewBox="0 0 156 270" xmlns="http://www.w3.org/2000/svg" style="position: absolute; left: -${dataPoint.position.x}px; top: -${dataPoint.position.y}px;">
-                <defs>
-                    <path id="animHex${index}" d="M26 15 L52 0 L78 15 L78 45 L52 60 L26 45 Z"/>
-                </defs>
-                <use href="#animHex${index}" x="${dataPoint.position.x}" y="${dataPoint.position.y}" 
-                     fill="${dataPoint.color}" class="hex-fill"
-                     transform-origin="${dataPoint.position.x + 52} ${dataPoint.position.y + 30}"/>
-            </svg>
-            <div class="hex-icon">
-                <i data-lucide="${dataPoint.icon}"></i>
-            </div>
-            <div class="hex-ripple" style="color: ${dataPoint.color};">
-                <svg width="200" height="200" viewBox="-61 -70 200 200" xmlns="http://www.w3.org/2000/svg" style="position: absolute; left: -61px; top: -70px;">
-                    <path class="hex-ripple-path" 
-                          d="M26 15 L52 0 L78 15 L78 45 L52 60 L26 45 Z"
-                          transform-origin="52 30"/>
+            <div class="hex-scale-wrapper">
+                <svg width="78" height="60" viewBox="0 0 78 60" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M0 15 L26 0 L52 15 L52 45 L26 60 L0 45 Z" 
+                          fill="${dataPoint.color}" class="hex-fill"
+                          transform="translate(26, 0)"/>
                 </svg>
+                <div class="hex-icon">
+                    <i data-lucide="${dataPoint.icon}"></i>
+                </div>
+                <div class="hex-ripple" style="color: ${dataPoint.color};">
+                    <svg width="156" height="120" viewBox="-39 -30 156 120" xmlns="http://www.w3.org/2000/svg" style="position: absolute; left: -39px; top: -30px;">
+                        <path class="hex-ripple-path" 
+                              d="M0 15 L26 0 L52 15 L52 45 L26 60 L0 45 Z"
+                              transform="translate(26, 0)"/>
+                    </svg>
+                </div>
             </div>
         `;
 
