@@ -17,6 +17,8 @@ document.addEventListener('DOMContentLoaded', function() {
     // Mobile menu
     initMobileMenu();
 
+    // Initialize simple typing animation
+    initSimpleTypingAnimation();
 
     // Interactive demo
     initInteractiveDemo();
@@ -134,6 +136,11 @@ function initAnimatedHexagons() {
     const STAGGER_DELAY = 2000; // 2 seconds between each hexagon
     
     hexagons.forEach((hex, index) => {
+        // Skip the 6th hexagon (index 5) from the animation loop
+        if (index === 5) {
+            return;
+        }
+        
         const delay = index * STAGGER_DELAY;
         
         // Animation sequence for each hexagon
@@ -213,6 +220,26 @@ function initMobileMenu() {
     }
 }
 
+/**
+ * Simple typing animation for terminal mockup
+ */
+function initSimpleTypingAnimation() {
+    const codeLines = document.querySelectorAll('.hero-preview .code-line');
+    if (!codeLines.length) return;
+    
+    // Hide all code lines initially
+    codeLines.forEach(line => {
+        line.style.opacity = '0';
+    });
+    
+    // Type out each line with a delay
+    codeLines.forEach((line, index) => {
+        setTimeout(() => {
+            line.style.transition = 'opacity 0.3s ease';
+            line.style.opacity = '1';
+        }, 500 + (index * 150)); // Start after 500ms, 150ms between each line
+    });
+}
 
 /**
  * Interactive demo functionality

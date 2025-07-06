@@ -16,7 +16,7 @@
     <!-- Styles -->
     <link rel="stylesheet" href="../css/theme.css?v=89">
     <link rel="stylesheet" href="../css/main.css?v=89">
-    <link rel="stylesheet" href="../css/homepage.css?v=89">
+    <link rel="stylesheet" href="../css/homepage.css?v=149">
     
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -86,12 +86,8 @@
     <!-- Hero Section -->
     <section class="hero">
         <div class="hero-container">
-            <!-- Badge -->
-            <div class="hero-badge">
-                <div class="badge-icon">✓</div>
-                <span class="badge-text">Trusted by 1,000+ developers</span>
-            </div>
-            
+            <!-- White overlay for text readability -->
+            <div class="hero-text-overlay"></div>
             <!-- Main Title -->
             <h1 class="hero-title">
                 Build with real-time<br>
@@ -112,10 +108,6 @@
                 </a>
                 <div class="hero-features">
                     <div class="hero-feature">
-                        <i data-lucide="credit-card" class="feature-icon"></i>
-                        <span>No credit card required</span>
-                    </div>
-                    <div class="hero-feature">
                         <div class="stars-wrapper">
                             <i data-lucide="star" class="star-filled"></i>
                             <i data-lucide="star" class="star-filled"></i>
@@ -123,7 +115,7 @@
                             <i data-lucide="star" class="star-filled"></i>
                             <i data-lucide="star" class="star-filled"></i>
                         </div>
-                        <span><strong>5.0</strong> from 505 reviews</span>
+                        <span><strong>4.9</strong> from 505 reviews</span>
                     </div>
                 </div>
             </div>
@@ -137,61 +129,51 @@
                             <span class="dot"></span>
                             <span class="dot"></span>
                         </div>
-                        <div class="preview-title">MotorCheck API Response</div>
+                        <div class="preview-title">MotorCheck Dashboard</div>
                     </div>
-                    <div class="preview-content">
-                        <div class="code-line">
-                            <span class="line-number">1</span>
-                            <span class="code">{</span>
-                        </div>
-                        <div class="code-line">
-                            <span class="line-number">2</span>
-                            <span class="code">  <span class="key">"registration"</span>: <span class="string">"TE57 VRN"</span>,</span>
-                        </div>
-                        <div class="code-line">
-                            <span class="line-number">3</span>
-                            <span class="code">  <span class="key">"make"</span>: <span class="string">"FORD"</span>,</span>
-                        </div>
-                        <div class="code-line">
-                            <span class="line-number">4</span>
-                            <span class="code">  <span class="key">"model"</span>: <span class="string">"FOCUS"</span>,</span>
-                        </div>
-                        <div class="code-line">
-                            <span class="line-number">5</span>
-                            <span class="code">  <span class="key">"mot_status"</span>: <span class="string">"VALID"</span>,</span>
-                        </div>
-                        <div class="code-line">
-                            <span class="line-number">6</span>
-                            <span class="code">  <span class="key">"mot_expiry"</span>: <span class="string">"2025-09-14"</span>,</span>
-                        </div>
-                        <div class="code-line">
-                            <span class="line-number">7</span>
-                            <span class="code">  <span class="key">"valuation"</span>: <span class="number">12450</span></span>
-                        </div>
-                        <div class="code-line">
-                            <span class="line-number">8</span>
-                            <span class="code">}</span>
-                        </div>
+                    <div class="preview-content dashboard-image">
+                        <img src="../assets/dashboard-screenshot.png" alt="MotorCheck Dashboard" />
                     </div>
                 </div>
             </div>
         </div>
+        <!-- Bottom fade element -->
+        <div class="hero-bottom-fade"></div>
     </section>
 
     <!-- Trust Badges -->
     <section class="trust-section">
-        <div class="container">
-            <div class="trust-content">
-                <p class="trust-text">Powering vehicle data for industry leaders</p>
-                <div class="trust-logos">
-                    <div class="trust-logo">AutoTrader</div>
-                    <div class="trust-logo">Cazoo</div>
-                    <div class="trust-logo">WeBuyAnyCar</div>
-                    <div class="trust-logo">Admiral</div>
-                    <div class="trust-logo">Cinch</div>
+        <div class="trust-content">
+            <p class="trust-text">Trusted by automotive leaders</p>
+            <div class="trust-logos-grid">
+                <div class="trust-logo">
+                    <img src="https://assets.nexuspointapex.co.uk/tenant_d9013b5a-4990-4f3e-beec-4e1fc85990eb/media/uploads/swansway-logo.png" alt="Swansway">
+                </div>
+                <div class="trust-logo">
+                    <img src="../assets/logos/arnold-clark-new.webp" alt="Arnold Clark">
+                </div>
+                <div class="trust-logo">
+                    <img src="../assets/logos/zuto-logo.png" alt="Zuto">
+                </div>
+                <div class="trust-logo">
+                    <img src="../assets/logos/carwow-logo.png" alt="Carwow">
+                </div>
+                <div class="trust-logo">
+                    <img src="../assets/logos/carfinance247-new.jpeg" alt="CarFinance 247">
+                </div>
+                <div class="trust-logo">
+                    <img src="../assets/logos/group1-logo.jpg" alt="Group 1 Automotive">
+                </div>
+                <div class="trust-logo">
+                    <img src="../assets/logos/lithia-new.png" alt="Lithia">
+                </div>
+                <div class="trust-logo">
+                    <img src="../assets/logos/logo-8.png" alt="Partner Logo">
                 </div>
             </div>
         </div>
+        <!-- Top fade element pointing down -->
+        <div class="trust-top-fade"></div>
     </section>
 
     <!-- Features Section -->
@@ -518,6 +500,6 @@
         </div>
     </footer>
 
-    <script src="../js/homepage.js?v=89"></script>
+    <script src="../js/homepage.js?v=96"></script>
 </body>
 </html>
