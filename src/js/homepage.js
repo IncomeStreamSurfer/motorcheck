@@ -31,6 +31,9 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Animate on scroll
     initScrollAnimations();
+    
+    // Initialize stats counter animation
+    initStatsAnimation();
 });
 
 /**
@@ -541,6 +544,50 @@ function initScrollAnimations() {
         }
     `;
     document.head.appendChild(style);
+}
+
+/**
+ * Initialize stats counter animation
+ */
+function initStatsAnimation() {
+    const stats = document.querySelectorAll('.stat-value');
+    
+    const animateValue = (obj, start, end, duration) => {
+        let startTimestamp = null;
+        const step = (timestamp) => {
+            if (!startTimestamp) startTimestamp = timestamp;
+            const progress = Math.min((timestamp - startTimestamp) / duration, 1);
+            
+            if (end.includes('M+')) {
+                obj.innerHTML = Math.floor(progress * parseInt(end)) + 'M+';
+            } else if (end.includes('ms')) {
+                obj.innerHTML = Math.floor(progress * parseInt(end)) + 'ms';
+            } else if (end.includes('%')) {
+                obj.innerHTML = (progress * parseFloat(end)).toFixed(1) + '%';
+            } else if (end.includes('+')) {
+                obj.innerHTML = Math.floor(progress * parseInt(end.replace(/,/g, ''))).toLocaleString() + '+';
+            }
+            
+            if (progress < 1) {
+                window.requestAnimationFrame(step);
+            }
+        };
+        window.requestAnimationFrame(step);
+    };
+    
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting && !entry.target.classList.contains('animated')) {
+                const finalValue = entry.target.textContent;
+                animateValue(entry.target, 0, finalValue, 2000);
+                entry.target.classList.add('animated');
+            }
+        });
+    }, { threshold: 0.5 });
+    
+    stats.forEach(stat => {
+        observer.observe(stat);
+    });
 }
 
 // CSS for demo response styling

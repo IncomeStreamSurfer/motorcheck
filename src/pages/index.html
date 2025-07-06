@@ -16,7 +16,7 @@
     <!-- Styles -->
     <link rel="stylesheet" href="../css/theme.css?v=89">
     <link rel="stylesheet" href="../css/main.css?v=89">
-    <link rel="stylesheet" href="../css/homepage.css?v=149">
+    <link rel="stylesheet" href="../css/homepage.css?v=153">
     
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -255,6 +255,46 @@
         </div>
     </section>
 
+    <!-- Stats Section -->
+    <section class="stats-section">
+        <div class="container">
+            <div class="stats-header">
+                <h2>Powering millions of vehicle checks</h2>
+                <p>Trusted by developers and businesses across the UK</p>
+            </div>
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <i data-lucide="zap"></i>
+                    </div>
+                    <div class="stat-value" data-value="50">50M+</div>
+                    <div class="stat-label">API calls served</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <i data-lucide="clock"></i>
+                    </div>
+                    <div class="stat-value" data-value="180">180ms</div>
+                    <div class="stat-label">Average response time</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <i data-lucide="shield-check"></i>
+                    </div>
+                    <div class="stat-value" data-value="99.9">99.9%</div>
+                    <div class="stat-label">Uptime SLA</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <i data-lucide="users"></i>
+                    </div>
+                    <div class="stat-value" data-value="5000">5,000+</div>
+                    <div class="stat-label">Active developers</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- Interactive Demo Section -->
     <section class="demo-section">
         <div class="demo-container">
@@ -310,9 +350,23 @@
                         </button>
                     </div>
                     <div class="demo-output" id="demo-output">
-                        <div class="demo-loading">
-                            <div class="loading-spinner"></div>
-                        </div>
+                        <pre class="demo-response">
+<span class="json-bracket">{</span>
+  <span class="json-key">"success"</span>: <span class="json-boolean">true</span>,
+  <span class="json-key">"data"</span>: <span class="json-bracket">{</span>
+    <span class="json-key">"registration"</span>: <span class="json-string">"TE57 VRN"</span>,
+    <span class="json-key">"make"</span>: <span class="json-string">"FORD"</span>,
+    <span class="json-key">"model"</span>: <span class="json-string">"FOCUS"</span>,
+    <span class="json-key">"year"</span>: <span class="json-number">2007</span>,
+    <span class="json-key">"color"</span>: <span class="json-string">"SILVER"</span>,
+    <span class="json-key">"fuel_type"</span>: <span class="json-string">"DIESEL"</span>,
+    <span class="json-key">"mot_status"</span>: <span class="json-string">"VALID"</span>,
+    <span class="json-key">"mot_expiry"</span>: <span class="json-string">"2025-09-14"</span>,
+    <span class="json-key">"tax_status"</span>: <span class="json-string">"TAXED"</span>,
+    <span class="json-key">"valuation"</span>: <span class="json-number">12450</span>
+  <span class="json-bracket">}</span>
+<span class="json-bracket">}</span>
+                        </pre>
                     </div>
                 </div>
             </div>
@@ -500,6 +554,6 @@
         </div>
     </footer>
 
-    <script src="../js/homepage.js?v=96"></script>
+    <script src="../js/homepage.js?v=97"></script>
 </body>
 </html>
